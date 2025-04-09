@@ -1,4 +1,6 @@
-import axios from "axios";
+import { Resend } from 'resend';
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -12,28 +14,16 @@ export default async function handler(req, res) {
   }
 
   try {
-    const response = await axios.post(
-      "https://api.brevo.com/v3/smtp/email",
-      {
-        sender: {
-          name: "Satyam Goswami",
-          email: "satyamgoswami2705@gmail.com",
-        },
-        to: [{ email: "satyamg.tt.23@nitj.ac.in" }],
-        subject: "Snack Order",
-        htmlContent: `<h1>Order Received</h1><p>${itemname} - Qty: ${quantity} - Phone: ${phoneNumber}</p>`,
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          "api-key": process.env.BREVO_API_KEY,
-        },
-      }
-    );
+    const emailResponse = await resend.emails.send({
+      from: 'Satyam <onboarding@resend.dev>', // Or your verified domain email
+      to: ['satyamg.tt.23@nitj.ac.in'],
+      subject: 'Snack Order',
+      html: `<h1>Order Received</h1><p>${itemname} - Qty: ${quantity} - Phone: ${phoneNumber}</p>`,
+    });
 
-    res.status(200).json({ message: "Email sent", response: response.data });
+    res.status(200).json({ message: "Email sent", response: emailResponse });
   } catch (err) {
-    console.error("Failed to send email:", err.response?.data || err.message);
+    console.error("Failed to send email:", err.message || err);
     res.status(500).json({ error: "Failed to send email" });
   }
 }
