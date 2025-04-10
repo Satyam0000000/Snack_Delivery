@@ -26,7 +26,7 @@ export default async function handler(req, res) {
   try {
     const emailResponse = await resend.emails.send({
       from: 'Satyam <onboarding@resend.dev>',
-      to: ['satyamg.tt.23@nitj.ac.in'],
+      to: ['satyamgoswami613@gmail.com'],
       subject: 'Snack Order',
       html: `<h1>Order Received</h1><p>${itemname} - Qty: ${quantity} - Phone: ${phoneNumber}</p>`,
     });
