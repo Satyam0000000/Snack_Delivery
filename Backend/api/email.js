@@ -34,7 +34,7 @@ app.post('/api/email', async (req, res) => {
 
   try {
     const emailResponse = await resend.emails.send({
-      from: 'Satyam <onboarding@resend.dev>',
+      from: 'satyamgoswami613@gmail.com',
       to: ['satyamg.tt.23@nitj.ac.in'],
       subject: 'Snack Order',
       html: `<h1>Order Received</h1><p>${itemname} - Qty: ${quantity} - Phone: ${phoneNumber}</p>`,
