@@ -5,14 +5,26 @@ import { Resend } from 'resend';
 const app = express();
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+// Middleware for CORS
 app.use(cors({
-  origin: 'https://www.snackproject.site', // ✅ allow frontend domain
-  methods: ['POST'],
+  origin: 'https://www.snackproject.site',
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type'],
   credentials: true,
 }));
 
-app.use(express.json()); // to parse JSON body
+app.use(express.json()); // Parse JSON
 
+// Handle CORS preflight manually
+app.options('/api/email', (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', 'https://www.snackproject.site');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  res.sendStatus(200);
+});
+
+// Actual API
 app.post('/api/email', async (req, res) => {
   const { itemname, quantity, phoneNumber } = req.body;
 
@@ -35,5 +47,4 @@ app.post('/api/email', async (req, res) => {
   }
 });
 
-// Optional: if you're hosting on Vercel, export it
 export default app;
