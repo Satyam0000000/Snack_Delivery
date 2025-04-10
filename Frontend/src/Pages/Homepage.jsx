@@ -28,7 +28,7 @@ function Homepage() {
     };
 
     try {
-      const response = await fetch('https://api.snackproject.site/api/email', {
+      const response = await fetch('/api/email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
