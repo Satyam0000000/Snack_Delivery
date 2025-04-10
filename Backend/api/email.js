@@ -7,7 +7,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 // Middleware for CORS
 app.use(cors({
-  origin: 'https://www.snackproject.site',
+  origin: 'https://www.snackproject.site || https://snackproject.site',
   methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type'],
   credentials: true,
