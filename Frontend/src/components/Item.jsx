@@ -57,11 +57,12 @@ const Item = ({ image, name, stockPresent = true, onOrder , quantity, mobileNumb
 
       {!isExpanded && stockPresent && (
         <motion.div
-          initial={{ opacity: 0 }}
-          whileHover={{ opacity: 1 }}
-          transition={{ duration: 0.3 }}
-          className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 flex items-center justify-center"
-        >
+        initial={{ opacity: 0 }}
+        whileHover={{ opacity: 1 }}
+        transition={{ duration: 0.3 }}
+        className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center 
+                   opacity-100 sm:opacity-0 sm:group-hover:opacity-100"
+      >
           <motion.button
             onClick={handleBuyClick}
             whileHover={{ scale: 1.1 }}
