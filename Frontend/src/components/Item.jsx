@@ -60,8 +60,7 @@ const Item = ({ image, name, stockPresent = true, onOrder , quantity, mobileNumb
         initial={{ opacity: 0 }}
         whileHover={{ opacity: 1 }}
         transition={{ duration: 0.3 }}
-        className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center 
-                   opacity-100 sm:opacity-0 sm:group-hover:opacity-100"
+        className="absolute inset-0 flex items-center justify-center pointer-events-none"
       >
           <motion.button
             onClick={handleBuyClick}
