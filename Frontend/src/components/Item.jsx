@@ -65,7 +65,7 @@ const Item = ({ image, name, stockPresent = true, onOrder , quantity, mobileNumb
           <motion.button
             onClick={handleBuyClick}
             whileHover={{ scale: 1.1 }}
-            className="px-4 py-2 bg-white text-black rounded-md font-semibold shadow hover:bg-red-500 hover:text-white"
+            className="px-4 py-2 bg-white text-black rounded-md font-semibold shadow hover:bg-red-500 hover:text-white pointer-events-auto"
           >
             Buy
           </motion.button>
