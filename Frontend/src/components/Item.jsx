@@ -56,21 +56,21 @@ const Item = ({ image, name, stockPresent = true, onOrder , quantity, mobileNumb
       </div>
 
       {!isExpanded && stockPresent && (
-        <motion.div
-        initial={{ opacity: 0 }}
-        whileHover={{ opacity: 1 }}
-        transition={{ duration: 0.3 }}
-        className="absolute inset-0 flex items-center justify-center pointer-events-none"
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.3 }}
+      className="absolute inset-0 flex items-center justify-center pointer-events-none"
+    >
+      <motion.button
+        onClick={handleBuyClick}
+        whileHover={{ scale: 1.1 }}
+        className="px-4 py-2 bg-white text-black rounded-md font-semibold shadow hover:bg-red-500 hover:text-white pointer-events-auto"
       >
-          <motion.button
-            onClick={handleBuyClick}
-            whileHover={{ scale: 1.1 }}
-            className="px-4 py-2 bg-white text-black rounded-md font-semibold shadow hover:bg-red-500 hover:text-white pointer-events-auto"
-          >
-            Buy
-          </motion.button>
-        </motion.div>
-      )}
+        Buy
+      </motion.button>
+    </motion.div>
+  )}
 
       {isExpanded && stockPresent && (
         <motion.div
